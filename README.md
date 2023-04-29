@@ -2,6 +2,8 @@ A website built with Django intended to help create cyber awareness, as part of 
 
 Features include a homepage with other apps for an Articles page, a Videos page, and a Quizzes page.
 
+
+A demo can be found [here](examples/demo.mp4).
 <br>
 <br>
 
