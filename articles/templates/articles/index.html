@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Soteria - Articles</title>
+{% endblock %}
+{% block nav_articles %}
+<li class="nav-item lead active">
+  <a class="nav-link" href="{% url 'articles:index' %}">Articles</a>
+</li>
+{% endblock %} {% block heading %}
+<h1>Articles</h1>
+{% endblock %} {% block content %} {% if articles_list %}
+<ul class="pl-0 mt-3">
+  {% for article in articles_list %}
+  <div class="card w-75 ml-0 mb-4 shadow rounded">
+    <div class="card-body">
+      <h5 class="card-title">
+        <a href="{{ article.link }}" class="card-link">{{ article.title }}</a>
+      </h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        {{ article.author }}, {{ article.pub_date }}
+      </h6>
+      <p class="card-text">{{ article.description }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No articles are available.</p>
+{% endif %} {% endblock %}

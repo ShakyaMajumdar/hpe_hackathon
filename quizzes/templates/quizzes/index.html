@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Soteria - Quizzes</title>
+{% endblock %}
+{% block nav_quizzes %}
+<li class="nav-item lead active">
+  <a class="nav-link" href="{% url 'quizzes:index' %}">Quizzes</a>
+</li>
+{% endblock %} {% block heading %}
+<h1>Quizzes</h1>
+{% endblock %} {% block content %}
+{% if quizzes_list %}
+<ul class="pl-0 mt-3">
+  {% for quiz in quizzes_list %}
+  <div class="card w-75 ml-0 mb-4 shadow rounded">
+    <div class="card-body">
+      <h5 class="card-title">
+        <a href="{% url 'quizzes:quiz' quiz.id %}" class="card-link">{{ quiz.title }}</a>
+      </h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        {{ quiz.num_questions }} questions
+      </h6>
+      <p class="card-text">description</p>
+    </div>
+  </div>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No quizzes are available.</p>
+{% endif %} 
+{% endblock %}

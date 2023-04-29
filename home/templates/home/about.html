@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% block title %}
+    <title>Soteria - About</title>
+{% endblock %}
+{% block nav_about %}
+<li class="nav-item lead active">
+  <a class="nav-link" href="{% url 'home:about' %}">About</a>
+</li>
+{% endblock %} {% block heading %}
+<h1>About</h1>
+{% endblock %} {% block content %}
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid pariatur
+  voluptatem praesentium eveniet veniam officia distinctio error voluptate.
+  Reprehenderit sint earum ipsam atque beatae est dolore sapiente? Delectus,
+  quam dolor!
+</p>
+{% endblock %}

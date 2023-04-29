@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block heading %}
+<h1>
+    {{ quiz.title }}
+    <small class="text-muted">Results</small>
+</h1>
+{% endblock %} {% block content %}
+<br />
+{% for question_result in question_results %}
+<div class="card w-75 ml-0 mb-4 shadow rounded">
+  <div class="card-body">
+    <legend>
+      <h6 class="card-title">
+        {{ forloop.counter }}. {{ question_result.question.problem_statement }}
+      </h6>
+    </legend>
+    <div>
+      {% for option in question_result.question.options.all %} 
+        <label>
+            {{ option.option }}
+            {% if option == question_result.correct_option and option == question_result.selected_option %}
+              <i class="h4 text-success fa-solid fa-circle-check"></i><i class="h4 text-success fa-solid fa-circle-check"></i>
+            {% elif option == question_result.correct_option and option != question_result.selected_option %}
+              <i class="h4 text-success fa-solid fa-circle-check"></i>
+            {% elif option != question_result.correct_option and option == question_result.selected_option %}
+              <i class="h4 text-danger fa fa-solid fa-circle-xmark"></i>
+            {% endif %}  
+        </label>
+        <br />
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endfor %} {% endblock %}

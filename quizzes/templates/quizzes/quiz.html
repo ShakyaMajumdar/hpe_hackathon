@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block heading %}
+<h1>{{ quiz.title }}</h1>
+{% endblock %} {% block content %}
+<br>
+<form action="{% url 'quizzes:quiz' quiz.id %}" method="post">
+  {% csrf_token %} {% for question in quiz.questions.all %}
+  <fieldset class="card w-75 ml-0 mb-4 shadow rounded">
+    <div class="card-body">
+      <legend>
+        <h6 class="card-title">{{ forloop.counter }}. {{ question.problem_statement }}</h6>
+      </legend>
+      <div>
+        {% for option in question.options.all %}
+        <input
+          type="radio"
+          class="btn-check-input"
+          autocomplete="off"
+          name="option{{ forloop.parentloop.counter }}"
+          id="option{{ forloop.parentloop.counter }}.{{ forloop.counter }}"
+          value="{{ option.id }}"
+        />
+        <label for="option{{ forloop.parentloop.counter }}.{{ forloop.counter }}"">{{ option.option }}</label>
+        <br>
+        {% endfor %}
+      </div>
+    </div>
+  </fieldset>
+  {% endfor %}
+  <input type="submit" class="btn btn-outline-info" value="Submit" />
+</form>
+{% endblock %}
